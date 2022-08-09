@@ -40,6 +40,10 @@ const userSchema = mongoose.Schema(
       enum: roles,
       default: 'user',
     },
+    chat_id: {
+      type: String,
+      default: 'namer',
+    },
     isEmailVerified: {
       type: Boolean,
       default: false,
