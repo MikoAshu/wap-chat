@@ -3,6 +3,9 @@ const path = require('path');
 const catchAsync = require('../utils/catchAsync');
 const { authService, userService, tokenService, emailService } = require('../services');
 
+const LOGIN_VIEW_PAGE = '../views/auth/login.ejs';
+const REGISTER_VIEW_PAGE = '../views/auth/register.html';
+
 const register = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
   const tokens = await tokenService.generateAuthTokens(user);
@@ -10,7 +13,11 @@ const register = catchAsync(async (req, res) => {
 });
 
 const loginView = catchAsync((req, res) => {
-  res.sendFile(path.join(__dirname, '../views/auth/login.html'));
+  res.render(path.join(__dirname, LOGIN_VIEW_PAGE));
+});
+
+const registerView = catchAsync((req, res) => {
+  res.sendFile(path.join(__dirname, REGISTER_VIEW_PAGE));
 });
 
 const login = catchAsync(async (req, res) => {
@@ -54,6 +61,7 @@ const verifyEmail = catchAsync(async (req, res) => {
 
 module.exports = {
   register,
+  registerView,
   login,
   loginView,
   logout,

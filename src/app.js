@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const helmet = require('helmet');
 const xss = require('xss-clean');
+const ejs = require('ejs');
 const mongoSanitize = require('express-mongo-sanitize');
 const compression = require('compression');
 const cors = require('cors');
@@ -17,12 +18,15 @@ const ApiError = require('./utils/ApiError');
 
 const app = express();
 
-app.use('/public', express.static(path.join(__dirname, '../', 'public')));
-
 if (config.env !== 'test') {
   app.use(morgan.successHandler);
   app.use(morgan.errorHandler);
 }
+app.use('/public', express.static(path.join(__dirname, '../', 'public')));
+
+// ejs template engine
+app.set('views', path.join(__dirname, '../', 'views'));
+app.set('view engine', 'ejs');
 
 // set security HTTP headers
 app.use(helmet());
