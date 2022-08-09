@@ -1,4 +1,5 @@
 const httpStatus = require('http-status');
+const path = require('path');
 const catchAsync = require('../utils/catchAsync');
 const { authService, userService, tokenService, emailService } = require('../services');
 
@@ -6,6 +7,10 @@ const register = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
   const tokens = await tokenService.generateAuthTokens(user);
   res.status(httpStatus.CREATED).send({ user, tokens });
+});
+
+const loginView = catchAsync((req, res) => {
+  res.sendFile(path.join(__dirname, '../views/auth/login.html'));
 });
 
 const login = catchAsync(async (req, res) => {
@@ -50,6 +55,7 @@ const verifyEmail = catchAsync(async (req, res) => {
 module.exports = {
   register,
   login,
+  loginView,
   logout,
   refreshTokens,
   forgotPassword,

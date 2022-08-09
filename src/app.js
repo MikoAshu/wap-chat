@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const helmet = require('helmet');
 const xss = require('xss-clean');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -15,6 +16,8 @@ const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
 
 const app = express();
+
+app.use('/public', express.static(path.join(__dirname, '../', 'public')));
 
 if (config.env !== 'test') {
   app.use(morgan.successHandler);
