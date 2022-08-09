@@ -17,7 +17,7 @@
 - [Contributing](#contributing)
 
 ## Features
-
+- **Styling** : Pre and post processing with postcss. styles by tailwind css
 - **NoSQL database**: [MongoDB](https://www.mongodb.com) object data modeling using [Mongoose](https://mongoosejs.com)
 - **Authentication and authorization**: using [passport](http://www.passportjs.org)
 - **Validation**: request data validation using [Joi](https://github.com/hapijs/joi)
