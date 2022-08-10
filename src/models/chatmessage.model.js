@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import { v4 as uuidv4 } from 'uuid';
+const mongoose = require('mongoose');
+const v4 = require('uuid');
 
 const MESSAGE_TYPES = {
   TYPE_TEXT: 'text',
@@ -23,7 +23,7 @@ const chatMessageSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: () => uuidv4().replace(/-/g, ''),
+      default: () => v4().replace(/-/g, ''),
     },
     chatRoomId: String,
     message: mongoose.Schema.Types.Mixed,
@@ -176,6 +176,7 @@ chatMessageSchema.statics.markMessageRead = async function (chatRoomId, currentU
  * @param {{ page, limit }} options - pagination options
  * @param {String} currentUserOnlineId - user id
  */
+// eslint-disable-next-line no-unused-vars
 chatMessageSchema.statics.getRecentConversation = async function (chatRoomIds, options, currentUserOnlineId) {
   // eslint-disable-next-line no-useless-catch
   try {
@@ -259,4 +260,4 @@ chatMessageSchema.statics.getRecentConversation = async function (chatRoomIds, o
   }
 };
 
-export default mongoose.model('ChatMessage', chatMessageSchema);
+module.exports = mongoose.model('ChatMessage', chatMessageSchema);

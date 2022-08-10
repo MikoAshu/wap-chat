@@ -10,9 +10,7 @@ router
   .get('/:roomId', chatController.getConversationByRoomId)
   .post('/initiate', chatController.initiate)
   .post('/:roomId/message', chatController.postMessage)
-  .put('/:roomId/mark-read', chatController.markConversationReadByRoomId)
-  .delete('/room/:roomId', chatController.deleteRoomById)
-  .delete('/message/:messageId', chatController.deleteMessageById);
+  .put('/:roomId/mark-read', chatController.markConversationReadByRoomId);
 // auth(),
 
 module.exports = router;

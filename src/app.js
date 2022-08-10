@@ -24,7 +24,7 @@ if (config.env !== 'test') {
   app.use(morgan.errorHandler);
 }
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   return next();
 });
 

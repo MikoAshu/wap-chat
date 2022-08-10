@@ -1,18 +1,18 @@
-import mongoose from 'mongoose';
-import { v4 as uuidv4 } from 'uuid';
+const mongoose = require('mongoose');
+const v4 = require('uuid');
 
 const logger = require('../config/logger');
 
-export const CHAT_ROOM_TYPES = {
-  CONSUMER_TO_CONSUMER: 'consumer-to-consumer',
-  CONSUMER_TO_SUPPORT: 'consumer-to-support',
-};
+// const CHAT_ROOM_TYPES = {
+//   CONSUMER_TO_CONSUMER: 'consumer-to-consumer',
+//   CONSUMER_TO_SUPPORT: 'consumer-to-support',
+// };
 
 const chatRoomSchema = new mongoose.Schema(
   {
     _id: {
       type: String,
-      default: () => uuidv4().replace(/\-/g, ''),
+      default: () => v4().replace(/-/g, ''),
     },
     userIds: Array,
     type: String,
@@ -55,4 +55,4 @@ chatRoomSchema.statics.initiateChat = async function (userIds, type, chatInitiat
   }
 };
 
-export default mongoose.model('ChatRoom', chatRoomSchema);
+module.exports = mongoose.model('ChatRoom', chatRoomSchema);
