@@ -13,7 +13,6 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   // server = app.listen(config.port, () => {
   //   logger.info(`Listening to port ${config.port}`);
   // });
-  /** Create HTTP server. */
   server = http.createServer(app);
   /** Create socket connection */
   const io = socketio(server);
@@ -22,7 +21,6 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   global.io.on('connection', WebSockets.connection);
   /** Listen on provided port, on all network interfaces. */
   server.listen(config.port);
-  /** Event listener for HTTP server "listening" event. */
   server.on('listening', () => {
     logger.info(`Listening to port ${config.port}`);
   });
