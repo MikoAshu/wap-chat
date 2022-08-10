@@ -16,10 +16,10 @@
                 <div class="user-profile text-center">
                     <div class="flex items-center justify-center w-32 h-32 rounded-full m-auto mt-16 border-2 border-white bg-white shadow-lg">
                         <div class="text-gray-800 text-6xl">
-                            <h2 class="text-gray-800 ">Z</h2>
+                            <h2 id="initial" class="text-gray-800 ">Z</h2>
                         </div>                   
                      </div>
-                    <div class="text-gray-800 mt-8 text-lg">
+                    <div id="profileName" class="text-gray-800 mt-8 text-lg">
                         Zdagem
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                     </form> -->
                 </div>
             </div>
-            <div class="flex-1 bg-gray-100 w-full h-full">
+            <div class="flex-1 bg-gray-100 w-full h-full" >
                 <div class="main-body container m-auto w-11/12 h-full flex flex-col">
                     <div class="py-4 flex-2 flex flex-row">
                         <div class="flex-1">
@@ -83,11 +83,11 @@
                                 <div class="search flex-2 pb-6 px-2">
                                     <input type="text"
                                         class="outline-none py-2 block w-full bg-transparent border-b-2 border-gray-200"
-                                        placeholder="Search">
+                                        placeholder="Search" onkeyup="search(this)" name="search">
                                 </div>
-                                <div class="flex-1 h-full overflow-auto px-2">
+                                <div id="room" class="flex-1 h-full overflow-auto px-2">
                                     
-                                    <div
+                                    <!-- <div
                                         class="entry cursor-pointer transform hover:scale-105 duration-300 transition-transform bg-white mb-4 rounded p-4 flex shadow-md">
                                         <div class="flex-2">
                                             <div class="w-12 h-10 relative flex items-center justify-center">
@@ -107,14 +107,13 @@
                                         <div class="flex-2 text-right">
                                             <div><small class="text-gray-500">9 Aug</small></div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="chat-area flex-1 flex flex-col overflow-scroll max-h-96 h-96">
-
-                                <div class="flex-1 sm:p-6 justify-between flex flex-col ">
-                                    <div class="flex sm:items-center justify-between border-b-2 border-gray-200">
-                                        <div class="relative flex items-center space-x-4">
+                                <div class="flex-1 sm:p-6 justify-between flex flex-col">
+                                    <div id="chat"class="flex sm:items-center justify-between border-b-2 border-gray-200">
+                                        <!-- <div class="relative flex items-center space-x-4">
                                             <div class="w-12 h-10 relative flex items-center justify-center">
                                                 <div class="flex items-center justify-center w-10 h-10 rounded-full m-auto border-2 border-white bg-blue-500 shadow-lg">
                                                     <div class="text-gray-800 text-sm">
@@ -128,11 +127,12 @@
                                                     <span class="text-gray-700 mr-3">Miko Ashu</span>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
+
                                     <div id="messages"
                                         class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
-                                        <div class="chat-message">
+                                        <!-- <div class="chat-message">
                                             <div class="flex items-end">
                                                 <div
                                                     class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
@@ -193,30 +193,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+                                         -->
                                         
                                     </div>
-                                    <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
-                                        <div class="relative flex">
-                                            <input type="text" placeholder="Write your message"
-                                                class="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-5 bg-gray-200 rounded-md py-3">
-                                            <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
-                                                <button type="button"
-                                                    class="inline-flex items-center justify-center rounded-md rounded-l-none px-4 py-3 transition duration-500 ease-in-out text-white bg-yellow-500 hover:bg-blue-400 focus:outline-none">
-                                                    <span class="font-bold">Send</span>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                        fill="currentColor" class="h-6 w-6 ml-2 transform rotate-90">
-                                                        <path
-                                                            d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
-                                                        </path>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
+                                    <div id="sendMessage">
+                                     
                                     </div>
+                                   
                                 </div>
-
+                                <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
                                 <script src="/public/chat.js"></script>
+                               
                             </div>
                         </div>
                     </div>
