@@ -6,6 +6,7 @@ const ejs = require('ejs');
 const mongoSanitize = require('express-mongo-sanitize');
 const compression = require('compression');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const httpStatus = require('http-status');
 const config = require('./config/config');
@@ -22,6 +23,11 @@ if (config.env !== 'test') {
   app.use(morgan.successHandler);
   app.use(morgan.errorHandler);
 }
+
+app.use(function(req, res, next) {
+  return next();
+});
+
 app.use('/public', express.static(path.join(__dirname, '../', 'public')));
 
 // ejs template engine
@@ -29,16 +35,23 @@ app.set('views', path.join(__dirname, '../', 'views'));
 app.set('view engine', 'ejs');
 
 // set security HTTP headers
-app.use(helmet());
+// app.use(helmet({
+//   contentSecurityPolicy: false,
+// }));
 
+app.use('/', (req, res, next) => {
+  next()
+})
 // parse json request body
 app.use(express.json());
 
+// cookie
+app.use(cookieParser())
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
 
 // sanitize request data
-app.use(xss());
+// app.use(xss());
 app.use(mongoSanitize());
 
 // gzip compression

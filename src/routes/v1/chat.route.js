@@ -1,9 +1,11 @@
 const express = require('express');
+const auth = require('../../middlewares/auth');
 const chatController = require('../../controllers/chat.controller');
 
 const router = express.Router();
 
-router.get('/', chatController.chatView);
+router.get('/',chatController.chatView);
+// auth(),
 
 module.exports = router;
 
