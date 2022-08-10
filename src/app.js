@@ -39,14 +39,12 @@ app.set('view engine', 'ejs');
 //   contentSecurityPolicy: false,
 // }));
 
-app.use('/', (req, res, next) => {
-  next()
-})
 // parse json request body
 app.use(express.json());
 
 // cookie
-app.use(cookieParser())
+app.use(cookieParser());
+
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
 

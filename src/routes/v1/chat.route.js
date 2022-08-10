@@ -5,7 +5,7 @@ const chatController = require('../../controllers/chat.controller');
 const router = express.Router();
 
 router
-  .get('/view',chatController.chatView)
+  .get('/view', auth(), chatController.chatView)
   .get('/', chatController.getRecentConversation)
   .get('/:roomId', chatController.getConversationByRoomId)
   .post('/initiate', chatController.initiate)

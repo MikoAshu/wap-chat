@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 // Sending E-mail and Password for validation
-
+// eslint-disable-next-line no-use-before-define
 document.querySelector('#signin').addEventListener('click', () => {
   const email = document.querySelector('[name=email]').value;
   const password = document.querySelector('[name=password]').value;
@@ -13,6 +14,7 @@ document.querySelector('#signin').addEventListener('click', () => {
     body: JSON.stringify({ email, password }),
   })
     .then((response) => response.json())
+
     .then((data) => redirectUser(data))
     .catch((err) => console.log(err));
 });
@@ -20,40 +22,34 @@ document.querySelector('#signin').addEventListener('click', () => {
 // Function for redirecting users
 
 function redirectUser(data) {
-
-  if (data.code == 401) {
+  if (data.code === 401) {
     console.log('in 401');
-    let element = document.querySelector('.invisible');
+    const element = document.querySelector('.invisible');
     element.classList.remove('invisible');
-    document.querySelector('[name=password]').value ='';
-   $('[name=password]').css('border-color','red')
-
+    document.querySelector('[name=password]').value = '';
+    $('[name=password]').css('border-color', 'red');
   } else {
-    const token = data.tokens.access.token;
+    const { token } = data.tokens.access;
     localStorage.setItem('token', token);
 
     fetch('/v1/chat/view', {
-      method: 'GET',   
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-         Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
-      .then(response => response.url)
+      .then((response) => response.url)
       .then((data) => {
         window.location.href = data;
       })
       .catch((err) => console.log('error happend while getting v1/chat'));
 
-   
     // document.cookie = `token=${token}; SameSite=None; Secure`
-    
+
     // $.get('/v1/chat', function(data, status){
     //   console.log(data);
     // });
-
-   
-
   }
 }
 
