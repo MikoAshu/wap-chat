@@ -15,10 +15,10 @@ const { roles, userTypes } = require('../config/roles');
 
 const userSchema = mongoose.Schema(
   {
-    _id: {
-      type: String,
-      default: () => v4().replace(/-/g, ''),
-    },
+    // _id: {
+    //   type: String,
+    //   default: () => v4().replace(/-/g, ''),
+    // },
     name: {
       type: String,
       required: true,
