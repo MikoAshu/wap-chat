@@ -1,10 +1,11 @@
 const express = require('express');
+const auth = require('../../middlewares/auth');
 const chatController = require('../../controllers/chat.controller');
 
 const router = express.Router();
 
 router
-  .get('/view', chatController.chatView)
+  .get('/view',chatController.chatView)
   .get('/', chatController.getRecentConversation)
   .get('/:roomId', chatController.getConversationByRoomId)
   .post('/initiate', chatController.initiate)
@@ -12,6 +13,7 @@ router
   .put('/:roomId/mark-read', chatController.markConversationReadByRoomId)
   .delete('/room/:roomId', chatController.deleteRoomById)
   .delete('/message/:messageId', chatController.deleteMessageById);
+// auth(),
 
 module.exports = router;
 
